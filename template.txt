@@ -1,4 +1,4 @@
 {
     "title": "Build {{.Build.BuildTriggerId}}: {{.Build.Status}}",
-    "body": "[{{.Build.ProjectId}}] {{.Build.BuildTriggerId}} status: **{{.Build.Status}}**\n\n[View Logs]({{.Build.LogUrl}})"
+    "body": "[{{.Build.ProjectId}}] {{.Build.BuildTriggerId}} status: **{{.Build.Status}}**\n\n[View Logs]({{.Build.LogUrl}})\n\name{{if .Build.substitutions.TRIGGER_NAME}}{{.Build.substitutions.TRIGGER_NAME}}{{else}} Unknown {{end}}"
 }

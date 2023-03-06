@@ -1,4 +1,1 @@
-{
-    "title": "Build {{.Build.BuildTriggerId}}: {{.Build.Status}}",
-    "body": "[{{.Build.ProjectId}}] {{.Build.BuildTriggerId}} status: **{{.Build.Status}}**\n\n[View Logs]({{.Build.LogUrl}})\n\n Trigger name: {{if .Build.Substitutions.TRIGGER_NAME}}{{.Build.Substitutions.TRIGGER_NAME}}{{else}} Unknown {{end}}"
-}
+{\n    "title": "Build {{if .Build.Substitutions.TRIGGER_NAME}}{{.Build.Substitutions.TRIGGER_NAME}}{{else}}{{.Build.BuildTriggerId}}{{end}}: {{.Build.Status}}",\n    "body": "Cloud Build encountered an error: \n\n- Status: {{.Build.Status}}\n- Project: {{.Build.ProjectId}}\n- Trigger: \n{{if .Build.Substitutions.TRIGGER_NAME}}\n{{.Build.Substitutions.TRIGGER_NAME}}\n{{else}} Unknown {{end}}\n\n- Branch: \n{{if .Build.Substitutions.BRANCH_NAME}}\n{{.Build.Substitutions.BRANCH_NAME}}\n{{else}} Unknown {{end}}\n\n- Commit: \n{{if .Build.Substitutions.COMMIT_SHA}}\n[{{.Build.Substitutions.COMMIT_SHA}}](https://github.com/glasnt/{{.Build.Substitutions.REPO_NAME}}/commit/{{.Build.substitutions.COMMIT_SHA}})\n{{else}} Unknown {{end}}\n\n    \n    \n    "\n}

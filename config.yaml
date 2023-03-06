@@ -1,0 +1,17 @@
+apiVersion: cloud-build-notifiers/v1
+kind: GitHubIssuesNotifier
+metadata:
+  name: example-githubissues-notifier
+spec:
+  notification:
+    filter: build.status == Build.Status.FAILURE
+    template: 
+      type: golang
+      uri: gs://glasnt-cbn-template-1481-notifiers-config/template.txt
+    delivery:
+      githubToken:
+        secretRef: github-token
+      githubRepo: glasnt/cbn-template-1481
+  secrets:
+  - name: github-token
+    value: projects/glasnt-cbn-template-1481/secrets/github_token/versions/latest
